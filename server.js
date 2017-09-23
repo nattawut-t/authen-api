@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const Hapi = require('hapi')
 const Inert = require('inert')
 const Vision = require('vision')
@@ -5,9 +7,10 @@ const Jwt2Auth = require('hapi-auth-jwt2')
 const HapiSwagger = require('hapi-swagger')
 const Fs = require('fs')
 const _ = require('lodash')
+const Boom = require('boom')
 
 const Pack = require('./package')
-const { port, host } = require('./libs/config')
+const { port, host, secretKey } = require('./libs/config')
 const server = new Hapi.Server()
 
 server.connection({
@@ -22,7 +25,7 @@ const options = {
   },
   basePath: '/api',
   documentationPath: '/',
-  security: [{ 'jwt': [] }],
+  security: [],
   securityDefinitions: {
     'jwt': {
       'type': 'apiKey',
@@ -30,6 +33,19 @@ const options = {
       'in': 'header'
     }
   },
+}
+
+const validate = (decoded, request, callback) => {
+
+  console.log('decoded: ', decoded)
+  // const user = JSON.parse(decoded)
+  // console.log(user)
+
+  if (!decoded) {
+    return callback(Boom.wrap(new Error('Unauthorized'), 401), false)
+  }
+
+  return callback(null, true)
 }
 
 server.register([
@@ -41,6 +57,15 @@ server.register([
     'options': options,
   }],
   () => {
+    server.auth.strategy('jwt', 'jwt',
+      {
+        key: secretKey,
+        validateFunc: validate,
+        verifyOptions: { algorithms: ['HS256'] },
+      })
+
+    // server.auth.default('jwt')
+
     Fs.readdirSync('routes')
       .forEach(file => {
 
