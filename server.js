@@ -26,6 +26,7 @@ const options = {
   basePath: '/api',
   documentationPath: '/',
   security: [],
+  grouping: 'tags',
   securityDefinitions: {
     'jwt': {
       'type': 'apiKey',
