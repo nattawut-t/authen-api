@@ -1,5 +1,5 @@
-const Joi = require('Joi')
 const { login } = require('../controllers/basicAuthen')
+const { signinPayload } = require('../schemas/basicAuthen')
 
 module.exports = [
   {
@@ -7,19 +7,10 @@ module.exports = [
     path: '/api/signin',
     config: {
       handler: login,
-      description: 'Basic Authentication',
+      description: 'Signin with Basic Authentication',
       tags: ['api'],
       validate: {
-        payload: {
-          username: Joi
-            .string()
-            .required()
-            .description('username'),
-          password: Joi
-            .string()
-            .required()
-            .description('password'),
-        }
+        payload: signinPayload,
       },
     }
   },
