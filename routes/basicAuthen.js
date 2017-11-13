@@ -4,7 +4,7 @@ const { signinPayload } = require('../schemas/basicAuthen')
 module.exports = [
   {
     method: 'POST',
-    path: '/api/signin',
+    path: '/api/authen',
     config: {
       handler: login,
       description: 'Signin with Basic Authentication',
@@ -12,6 +12,7 @@ module.exports = [
       validate: {
         payload: signinPayload,
       },
+      cors: true,
     }
   },
 ]

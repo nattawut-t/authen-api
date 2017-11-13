@@ -3,13 +3,15 @@ const Boom = require('boom')
 const { secretKey } = require('../libs/config')
 const user = {
   id: 1,
-  username: 'user_1',
+  username: 'appsynth',
   password: 'P@ssw0rd',
-  name: 'Nattawut',
+  name: 'Appsynth',
 }
 
 const login = (request, reply) => {
   const { payload: { username, password } } = request
+
+  console.log(username, password)
 
   if (username === user.username && password === user.password) {
     const _user = {
