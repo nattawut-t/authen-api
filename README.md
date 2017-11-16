@@ -1,6 +1,6 @@
 # Authen API
 
-The authentication API for using in URL Shortener demonstration to Appsynth Co.,Ltd.
+The Authentication API for using in URL Shortener demonstration.
 
 This project is comprised of technology listed below.
 
@@ -62,7 +62,3 @@ or
 ```s
 yarn run dev
 ```
-
-## Notes
-
-This project is used for demonstration only. It need to be enhanced for a real-world application.
