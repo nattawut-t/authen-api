@@ -7,17 +7,19 @@ const Jwt2Auth = require('hapi-auth-jwt2')
 const HapiSwagger = require('hapi-swagger')
 const Fs = require('fs')
 const _ = require('lodash')
+const colors = require('colors')
 const { port, host, ...options } = require('./configs/server')
 const { secretKey } = require('./configs/jwt')
 const validate = require('./validators/jwt')
+const colorConfig = require('./configs/color')
 
 const server = new Hapi.Server()
 
+colors.setTheme(colorConfig)
 server.connection({
   host,
   port,
 })
-
 server.register(
   [
     Inert,
@@ -48,9 +50,10 @@ server.register(
 
     server.start(err => {
       if (err) {
-        console.log(err)
+        console.log(err.error)
+        return
       }
-      console.log('server is running at:', server.info.uri)
+      console.log('server is running at:'.info, server.info.uri)
     })
   },
 )
