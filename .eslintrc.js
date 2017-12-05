@@ -16,5 +16,6 @@ module.exports = {
     "max-lines": [2, 70],
     "global-require": 0,
     "import/no-dynamic-require": 0,
+    "no-underscore-dangle": 0,
   },
 }
