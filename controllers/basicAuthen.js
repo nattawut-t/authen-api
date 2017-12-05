@@ -1,6 +1,6 @@
 const JWT = require('jsonwebtoken')
 const Boom = require('boom')
-const { secretKey } = require('../libs/config')
+const { secretKey } = require('../configs')
 
 const mockUser = {
   id: 1,

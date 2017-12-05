@@ -9,7 +9,7 @@ const Fs = require('fs')
 const _ = require('lodash')
 const Boom = require('boom')
 const Pack = require('./package')
-const { port, host, secretKey } = require('./libs/config')
+const { port, host, secretKey } = require('./configs')
 
 const server = new Hapi.Server()
 
