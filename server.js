@@ -8,12 +8,18 @@ const HapiSwagger = require('hapi-swagger')
 const Fs = require('fs')
 const _ = require('lodash')
 const colors = require('colors')
+// const mongoose = require('mongoose')
+
 const { port, host, ...options } = require('./configs/server')
+// const { mongoUrl } = require('./configs/db')
 const { secretKey } = require('./configs/jwt')
 const validate = require('./validators/jwt')
 const colorConfig = require('./configs/color')
+const connectDb = require('./models/connect')
 
 const server = new Hapi.Server()
+
+// mongoose.Promise = require('bluebird')
 
 colors.setTheme(colorConfig)
 server.connection({
@@ -48,12 +54,14 @@ server.register(
         })
       })
 
+    connectDb()
+
     server.start(err => {
       if (err) {
         console.log(err.error)
         return
       }
-      console.log('server is running at:'.info, server.info.uri)
+      console.log('server is running at:'.bold.green, server.info.uri)
     })
   },
 )
