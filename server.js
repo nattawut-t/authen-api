@@ -8,9 +8,9 @@ const HapiSwagger = require('hapi-swagger')
 const Fs = require('fs')
 const _ = require('lodash')
 const Boom = require('boom')
-
 const Pack = require('./package')
 const { port, host, secretKey } = require('./libs/config')
+
 const server = new Hapi.Server()
 
 server.connection({
@@ -20,24 +20,23 @@ server.connection({
 
 const options = {
   info: {
-    'title': Pack.name,
-    'version': Pack.version,
+    title: Pack.name,
+    version: Pack.version,
   },
   basePath: '/api',
   documentationPath: '/',
   security: [],
   grouping: 'tags',
   securityDefinitions: {
-    'jwt': {
-      'type': 'apiKey',
-      'name': 'Authorization',
-      'in': 'header'
-    }
+    jwt: {
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header',
+    },
   },
 }
 
 const validate = (decoded, request, callback) => {
-
   console.log('decoded: ', decoded)
   // const user = JSON.parse(decoded)
   // console.log(user)
@@ -49,31 +48,32 @@ const validate = (decoded, request, callback) => {
   return callback(null, true)
 }
 
-server.register([
-  Inert,
-  Vision,
-  Jwt2Auth,
-  {
-    'register': HapiSwagger,
-    'options': options,
-  }],
+server.register(
+  [
+    Inert,
+    Vision,
+    Jwt2Auth,
+    {
+      register: HapiSwagger,
+      options,
+    },
+  ],
   () => {
-    server.auth.strategy('jwt', 'jwt',
+    server.auth.strategy(
+      'jwt',
+      'jwt',
       {
         key: secretKey,
         validateFunc: validate,
         verifyOptions: { algorithms: ['HS256'] },
-      })
-
-    // server.auth.default('jwt')
+      },
+    )
 
     Fs.readdirSync('routes')
       .forEach(file => {
-
-        _.each(require('./routes/' + file), route => {
+        _.each(require(`./routes/${file}`), route => {
           server.route(route)
         })
-
       })
 
     server.start(err => {
@@ -82,6 +82,7 @@ server.register([
       }
       console.log('Server running at:', server.info.uri)
     })
-  })
+  },
+)
 
 module.exports = server

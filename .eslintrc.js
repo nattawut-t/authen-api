@@ -1,29 +1,19 @@
 module.exports = {
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
   },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "sourceType": "module"
-  },
+  "extends": "airbnb-base",
   "rules": {
-    // "indent": [
-    //   "error",
-    //   2
-    // ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
     "semi": [
       "error",
       "never"
     ],
-    "no-console": 1,
-  }
-};
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "global-require": 0,
+    "import/no-dynamic-require": 0,
+  },
+}

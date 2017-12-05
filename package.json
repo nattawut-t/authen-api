@@ -13,7 +13,6 @@
     "babel-eslint": "^8.0.0",
     "boom": "^5.2.0",
     "dotenv": "^4.0.0",
-    "eslint": "^4.7.2",
     "eslint-config-hapi": "^10.1.0",
     "eslint-plugin-hapi": "^4.0.0",
     "fs": "^0.0.1-security",
@@ -21,8 +20,15 @@
     "hapi-auth-jwt2": "^7.3.0",
     "hapi-swagger": "^7.8.1",
     "inert": "^4.2.1",
+    "joi": "^13.0.2",
+    "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "nodemon": "^1.12.1",
     "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }

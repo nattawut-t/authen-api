@@ -1,7 +1,8 @@
 const JWT = require('jsonwebtoken')
 const Boom = require('boom')
 const { secretKey } = require('../libs/config')
-const user = {
+
+const mockUser = {
   id: 1,
   username: 'appsynth',
   password: 'P@ssw0rd',
@@ -13,12 +14,12 @@ const login = (request, reply) => {
 
   console.log(username, password)
 
-  if (username === user.username && password === user.password) {
-    const _user = {
-      id: user.id,
-      name: user.name,
+  if (username === mockUser.username && password === mockUser.password) {
+    const user = {
+      id: mockUser.id,
+      name: mockUser.name,
     }
-    const token = JWT.sign(_user, secretKey)
+    const token = JWT.sign(user, secretKey)
 
     return reply({ token })
   }
