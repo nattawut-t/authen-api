@@ -1,4 +1,4 @@
-const { login } = require('../controllers/basicAuthen')
+const { login } = require('../controllers/authen/basic')
 const { signinPayload } = require('../schemas/basicAuthen')
 
 module.exports = [
