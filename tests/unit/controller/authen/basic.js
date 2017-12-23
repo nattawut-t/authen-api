@@ -25,6 +25,7 @@ describe('/api/authen', () => {
           password: 'P@ssw0rd',
         },
       }
+
       controller.__set__('getUser', () => ({
         username: 'nattawut',
         password: '$2a$10$2juIpEpr2VMYKXzn4nfpmuOlQ/gNxqbuyuuoQtFM7LLqWIO0Xdp9S',
