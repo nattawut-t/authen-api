@@ -15,7 +15,7 @@ const { port, host, ...options } = require('./configs/server')
 const { secretKey } = require('./configs/jwt')
 const validate = require('./validators/jwt')
 const colorConfig = require('./configs/color')
-const connectDb = require('./models/connect')
+// const connectDb = require('./models/connect')
 
 const server = new Hapi.Server()
 
@@ -54,7 +54,7 @@ server.register(
         })
       })
 
-    connectDb()
+    // connectDb()
 
     server.start(err => {
       if (err) {
