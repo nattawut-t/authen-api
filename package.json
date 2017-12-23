@@ -9,7 +9,8 @@
     "dev": "./node_modules/.bin/nodemon server --exec 'npm run lint && node'",
     "lint": "./node_modules/.bin/eslint .",
     "unittest": "./node_modules/.bin/mocha --recursive tests/unit",
-    "test": "./node_modules/.bin/concurrently \"npm run lint\" \"npm run unittest\""
+    "test": "./node_modules/.bin/concurrently \"npm run lint\" \"npm run unittest\"",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests/* -- --recursive -u exports -R spec && open coverage/lcov-report/index.html"
   },
   "dependencies": {
     "babel-eslint": "^8.0.0",
@@ -40,6 +41,7 @@
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "istanbul": "^0.4.5",
     "mocha": "^4.0.1",
     "rewire": "^3.0.2",
     "sinon": "^4.1.3"
