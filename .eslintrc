@@ -1,7 +1,7 @@
-module.exports = {
+{
   "env": {
     "es6": true,
-    "node": true,
+    "node": true
   },
   "extends": "airbnb-base",
   "rules": {
@@ -13,9 +13,12 @@ module.exports = {
       "error",
       "as-needed"
     ],
-    "max-lines": [2, 70],
+    "max-lines": [
+      2,
+      200
+    ],
     "global-require": 0,
     "import/no-dynamic-require": 0,
-    "no-underscore-dangle": 0,
-  },
+    "no-underscore-dangle": 0
+  }
 }
