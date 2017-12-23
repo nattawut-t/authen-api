@@ -10,7 +10,7 @@
     "lint": "./node_modules/.bin/eslint .",
     "unittest": "./node_modules/.bin/mocha --recursive tests/unit",
     "test": "./node_modules/.bin/concurrently \"npm run lint\" \"npm run unittest\"",
-    "cover": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests -- --recursive -u exports -R spec"
+    "cover": "node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover ./node_modules/.bin/_mocha tests -- --recursive -u exports -R spec"
   },
   "dependencies": {
     "babel-eslint": "^8.0.0",
