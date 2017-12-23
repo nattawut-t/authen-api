@@ -10,7 +10,7 @@
     "lint": "./node_modules/.bin/eslint .",
     "unittest": "./node_modules/.bin/mocha --recursive tests/unit",
     "test": "./node_modules/.bin/concurrently \"npm run lint\" \"npm run unittest\"",
-    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests/* -- --recursive -u exports -R spec && open coverage/lcov-report/index.html"
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests/* -- --recursive -u exports -R spec"
   },
   "dependencies": {
     "babel-eslint": "^8.0.0",
