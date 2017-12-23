@@ -8,7 +8,7 @@ module.exports = [
     config: {
       handler: login,
       description: 'Signin with Basic Authentication',
-      tags: ['api'],
+      tags: ['authen'],
       validate: {
         payload: signinPayload,
       },
