@@ -5,8 +5,8 @@
   "license": "MIT",
   "author": "Nattawut Tammaratmetee <1203ball@gmail.com>",
   "scripts": {
-    "start": "node_modules/.bin/nodemon server",
-    "dev": "node_modules/.bin/nodemon server --exec 'npm run lint && node'",
+    "start": "./node_modules/.bin/nodemon server",
+    "dev": "./node_modules/.bin/nodemon server --exec 'npm run lint && node'",
     "lint": "eslint ."
   },
   "dependencies": {
