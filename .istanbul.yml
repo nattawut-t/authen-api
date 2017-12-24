@@ -3,4 +3,4 @@ instrumentation:
   extensions:
     - .js
   default-excludes: true
-  excludes: ['**/configs/**', '**/models/**']
+  excludes: ['**/configs/**', '**/models/**', 'env.js']
