@@ -5,12 +5,12 @@
   "license": "MIT",
   "author": "Nattawut Tammaratmetee <1203ball@gmail.com>",
   "scripts": {
-    "start": "NODE_ENV=${NODE_ENV:=dev} && echo ${NODE_ENV} && ./node_modules/.bin/nodemon server",
+    "start": "export NODE_ENV=${NODE_ENV:=dev} && echo ${NODE_ENV} && ./node_modules/.bin/nodemon server",
     "dev": "./node_modules/.bin/nodemon server --exec 'npm run lint && node'",
     "lint": "./node_modules/.bin/eslint .",
     "unittest": "./node_modules/.bin/mocha --recursive tests/unit",
     "test": "./node_modules/.bin/concurrently \"npm run lint\" \"npm run unittest\"",
-    "cover": "NODE_ENV=${NODE_ENV:=dev} && echo ${NODE_ENV} && node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests -- --recursive -u exports -R spec"
+    "cover": "export NODE_ENV=${NODE_ENV:=test} && echo ${NODE_ENV} && node --harmony ./node_modules/istanbul-harmony/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests -- --recursive -u exports -R spec"
   },
   "dependencies": {
     "babel-eslint": "^8.0.0",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
