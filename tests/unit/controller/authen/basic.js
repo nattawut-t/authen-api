@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('../../../../env')
 
 const chai = require('chai')
 // const sinon = require('sinon')

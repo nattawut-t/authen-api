@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('./env')
 
 const Hapi = require('hapi')
 const Inert = require('inert')
