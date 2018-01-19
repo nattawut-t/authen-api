@@ -1,8 +1,8 @@
 const document = {
-  username: 'nattawut',
-  password: '$2a$10$2juIpEpr2VMYKXzn4nfpmuOlQ/gNxqbuyuuoQtFM7LLqWIO0Xdp9S',
+  username: 'PeerAdmin',
+  password: '$2a$10$2.B/D5kWSlL5cewD1YLYBO9kvfeTqOZtjU01qJwzExJCeCixkOjym',
   name: 'Nattawut',
-  surname: 'T',
+  surname: 'T.',
 }
 
 db.Users.insert(document)

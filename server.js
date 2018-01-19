@@ -8,14 +8,14 @@ const HapiSwagger = require('hapi-swagger')
 const Fs = require('fs')
 const _ = require('lodash')
 const colors = require('colors')
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const { port, host, ...options } = require('./configs/server')
 // const { mongoUrl } = require('./configs/db')
 const { secretKey } = require('./configs/jwt')
 const validate = require('./validators/jwt')
 const colorConfig = require('./configs/color')
-const connectDb = require('./models/connect')
+// const connectDb = require('./models/connect')
 
 const server = new Hapi.Server()
 
@@ -54,7 +54,7 @@ server.register(
         })
       })
 
-    connectDb()
+    // connectDb()
 
     server.start(err => {
       if (err) {

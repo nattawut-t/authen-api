@@ -6,15 +6,21 @@ const { secretKey } = require('../../configs/jwt')
 const User = require('../../models/User')()
 
 function getUser(username) {
-  return User
-    .findOne({ username })
-    .select({
-      username: 1,
-      password: 1,
-      name: 1,
-      surname: 1,
-    })
-    .exec()
+  return {
+    username: 'PeerAdmin',
+    password: '$2a$10$zSlNuh1iH4uETvnDgq/VkeZlPcRyCYT.9jlmrftbll8Els0P0EmFW',
+    name: 'Nattawut',
+    surname: 'T.',
+  }
+  // return User
+  //   .findOne({ username })
+  //   .select({
+  //     username: 1,
+  //     password: 1,
+  //     name: 1,
+  //     surname: 1,
+  //   })
+  //   .exec()
 }
 
 const login = async (request, response) => {
