@@ -33,6 +33,7 @@
     "mongoose": "^4.13.6",
     "nodemon": "^1.12.1",
     "pbkdf2": "^3.0.14",
+    "uuid": "^3.2.1",
     "vision": "^4.1.1"
   },
   "devDependencies": {
