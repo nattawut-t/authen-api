@@ -15,33 +15,7 @@ const search = (req, res) => {
 
 const _map = (docs, page, limit) => {
   if (Array.isArray(docs) && docs.length > 0) {
-    return docs
-      .slice((page - 1) * limit, page * limit)
-      .map(
-        ({
-          requestID,
-          requestNo,
-          service,
-          requestType,
-          timestamp,
-          requester,
-          status,
-          data: { relationship, beneNameEN },
-        }) => ({
-          requestID,
-          requestNo,
-          service,
-          requestType,
-          timestamp,
-          requester,
-          status,
-          relationship,
-          data: {
-            relationship,
-            beneNameEN,
-          },
-        }),
-      )
+    return docs.slice((page - 1) * limit, page * limit)
   }
 
   return []
