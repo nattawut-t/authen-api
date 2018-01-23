@@ -1,63 +1,32 @@
 const mockDatas = require('../../data/lgs')
 
-// const fields = [
-//   'documentID',
-//   'lgNumber',
-//   'lgAmount',
-//   'operationFlag',
-//   'effectiveDate',
-//   'maturityDate',
-//   'issueDate',
-//   'issueBranchNumber',
-//   'issueBranchDescription',
-//   'issueHubNumber',
-//   'serviceBranchNumber',
-//   'subgroupCode',
-//   'issueTerm',
-//   'renewNumber',
-//   'customsFlag',
-//   'beneTaxID',
-//   'beneNameTH',
-//   'beneNameEN',
-//   'lgType',
-//   'issuerTaxID',
-//   'issuerNameEN',
-//   'issuerNameTH',
-//   'requesterTaxID',
-//   'requesterNameTH',
-//   'requesterNameEN',
-//   'lgStatus',
-//   'renewDate',
-//   'projectValue',
-//   'requestDate',
-//   'modifyDate',
-//   'lgFormNumber',
-//   'lgDescription1',
-//   'lgDescription2',
-//   'lgDescription3',
-//   'lgDescription4',
-//   'lgDescription5',
-//   'lgApproveDate',
-//   'projectNo',
-//   'projectName',
-//   'remark',
-// ]
-
 const search = (req, res) => {
-  const { query: { page = 1, limit = 20 } } = req
+  const { query: { page = 1, limit = 20, status, createDate } } = req
 
-  console.log(page, limit)
+  console.log(page, limit, status, createDate)
 
   return res({
     status: 'success',
     message: 'search LG successfully',
     total: mockDatas.length,
-    result: _map(mockDatas, page, limit),
+    result: _map(mockDatas, page, limit, status, createDate),
   })
 }
 
-const _map = (docs, page, limit) => {
+const _map = (docs, page, limit, status = '', createDate = '') => {
   if (Array.isArray(docs) && docs.length > 0) {
+    if (status) {
+      const value = status.toLowerCase().trim()
+      docs = docs.filter(({ data: { lgStatus } }) => lgStatus === value)
+      console.log('filter_by_status:', `x${status}x`, docs.length)
+    }
+
+    if (createDate) {
+      const value = createDate.toLowerCase().trim()
+      docs = docs.filter(({ createDate }) => createDate === value)
+      console.log('filter_by_createDate:', createDate, docs.length)
+    }
+
     return docs
       .slice((page - 1) * limit, page * limit)
       .map(
