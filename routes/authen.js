@@ -4,7 +4,7 @@ const { signinPayload } = require('../schemas/basicAuthen')
 module.exports = [
   {
     method: 'POST',
-    path: '/api/authen',
+    path: '/api/v1/auth/login',
     config: {
       handler: login,
       description: 'Basic Authentication',
