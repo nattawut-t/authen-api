@@ -33,7 +33,7 @@ const login = async (request, response) => {
     if (user && compared) {
       const { name, surname } = user
       const token = jwt.sign({ username, name, surname }, secretKey)
-      return response({ token })
+      return response({ result: { access_token: token } })
     }
 
     return response(boom.wrap(new Error('Incorrect password'), 401))
